@@ -61,12 +61,12 @@ will produce:
 ```bash
 { name: 'First', date: 2021-09-12T19:23:10.048Z }
 { name: 'Second', date: 2021-09-12T19:23:10.057Z }
-{ name: 'Third', date: 2021-09-12T19:23:11.050Z } # third task was waiting for first and second tasks to resolve
+{ name: 'Third', date: 2021-09-12T19:23:11.050Z } # notice 1-second delay, third task was waiting for first and second tasks to resolve
 ```
 
 - example with heavy requests (every request takes 10 seconds to respond)
 
-```
+```ts
 import { ConcurrentQueue } from "@sebowy/concurrent-queue";
 import { default as fetch } from 'node-fetch';
 
@@ -93,10 +93,10 @@ will produce:
 { email: 'george.bluth@reqres.in', date: 2021-09-12T19:42:04.970Z }
 { email: 'janet.weaver@reqres.in', date: 2021-09-12T19:42:04.975Z }
 { email: 'emma.wong@reqres.in', date: 2021-09-12T19:42:04.981Z }
-{ email: 'tracey.ramos@reqres.in', date: 2021-09-12T19:42:15.144Z } # notice 10 seconds "brake" after every 3 tasks
+{ email: 'tracey.ramos@reqres.in', date: 2021-09-12T19:42:15.144Z } # notice 10-second delay after every 3 tasks
 { email: 'charles.morris@reqres.in', date: 2021-09-12T19:42:15.154Z }
 { email: 'eve.holt@reqres.in', date: 2021-09-12T19:42:15.159Z }
-{ email: 'michael.lawson@reqres.in', date: 2021-09-12T19:42:25.315Z }
+{ email: 'michael.lawson@reqres.in', date: 2021-09-12T19:42:25.315Z } # another 10-second delay
 { email: 'lindsay.ferguson@reqres.in', date: 2021-09-12T19:42:25.315Z }
 ```
 ### Creating instance
