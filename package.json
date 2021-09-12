@@ -1,6 +1,6 @@
 {
   "name": "@sebowy/concurrent-queue",
-  "version": "0.0.0-development",
+  "version": "1.1.0",
   "description": "\"ConcurrentQueue\" organizes promises execution",
   "main": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
