@@ -1,0 +1,66 @@
+{
+  "name": "@sebowy/concurrent-queue",
+  "version": "0.0.0-development",
+  "description": "\"ConcurrentQueue\" organizes promises execution",
+  "main": "./dist/umd/index.js",
+  "module": "./dist/esm/index.js",
+  "es2015": "./dist/es2015/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run lint",
+    "build": "rimraf dist && npm run build:es2015 && npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:umd:min",
+    "build:es2015": "tsc --module es2015 --target es2015 --outDir dist/es2015",
+    "build:esm": "tsc --module es2015 --target es5 --outDir dist/esm",
+    "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs",
+    "build:umd": "rollup dist/esm/index.js --format umd --name concurrent-queue --sourcemap -o dist/umd/index.js",
+    "build:umd:min": "uglifyjs --compress --mangle --source-map --ie8 --comments -o dist/umd/index.min.js -- dist/umd/index.js && gzip dist/umd/index.min.js -c > dist/umd/index.min.js.gz",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write .",
+    "test": "jest --config jestconfig.json",
+    "semantic-release": "semantic-release"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastianowy/concurrent-queue.git"
+  },
+  "keywords": [
+    "concurrent",
+    "queue",
+    "promise",
+    "organize",
+    "concurrency"
+  ],
+  "author": "Sebastian Kubiak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebastianowy/concurrent-queue/issues"
+  },
+  "homepage": "https://github.com/sebastianowy/concurrent-queue#readme",
+  "devDependencies": {
+    "@semantic-release/npm": "^7.1.3",
+    "@types/jest": "^27.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.1.1",
+    "prettier": "^2.4.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.56.3",
+    "semantic-release": "^17.4.7",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3",
+    "uglify-js": "^3.14.2"
+  }
+}
