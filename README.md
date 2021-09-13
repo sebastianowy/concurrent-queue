@@ -1,5 +1,5 @@
-<h1 align="center" style="border-bottom: none;">ConcurrentQueue</h1>
-<h3 align="center">Helps organize promises executions</h3>
+<h1 align="center" style="border-bottom: none;">Concurrent Queue</h1>
+<h3 align="center">Helps to organize promises execution</h3>
 <p align="center">
   <a href="https://www.npmjs.com/package/@sebowy/concurrent-queue"><img alt="npm latest version" src="https://img.shields.io/npm/v/@sebowy/concurrent-queue/latest.svg"></a>
   <a href="https://github.com/sebastianowy/concurrent-queue/actions?query=workflow%3ATest+branch%3Amain"><img alt="Build states" src="https://github.com/sebastianowy/concurrent-queue/workflows/Test/badge.svg"></a>
@@ -84,8 +84,10 @@ const someFunctionsToRun = Array.from(
                 console.log({ email: user.data.email, date: new Date() })),
 );
 
-someFunctionsToRun.forEach(someFunction => 
+const allTasks = someFunctionsToRun.map(someFunction => 
     queue.add(() => someFunction()))
+
+Promise.all(allTasks).then(() => console.log({ date: new Date() });
 ```
 
 will produce:
@@ -101,6 +103,8 @@ will produce:
 # another 10-second delay
 { email: 'michael.lawson@reqres.in', date: 2021-09-12T19:42:25.315Z }
 { email: 'lindsay.ferguson@reqres.in', date: 2021-09-12T19:42:25.315Z }
+# all tasks done
+{ date: 2021-09-12T19:42:25.327Z }
 ```
 ### Creating instance
 
