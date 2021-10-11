@@ -1,7 +1,7 @@
 <h1 align="center" style="border-bottom: none;">Concurrent Queue</h1>
 <h3 align="center">Helps to organize promises execution</h3>
 <p align="center">
-  <a href="https://www.npmjs.com/package/@sebowy/concurrent-queue"><img alt="npm latest version" src="https://img.shields.io/npm/v/@sebowy/concurrent-queue/latest.svg"></a>
+  <a href="https://www.npmjs.com/package/@sebastianowy/concurrent-queue"><img alt="npm latest version" src="https://img.shields.io/npm/v/@sebastianowy/concurrent-queue/latest.svg"></a>
   <a href="https://github.com/sebastianowy/concurrent-queue/actions?query=workflow%3ATest+branch%3Amain"><img alt="Build states" src="https://github.com/sebastianowy/concurrent-queue/workflows/Test/badge.svg"></a>
   <a href="https://github.com/semantic-release/semantic-release"><img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"></a>
 </p>
@@ -9,9 +9,9 @@
 ## Installation
 
 ```bash
-npm install --save @sebowy/concurrent-queue
+npm install --save @sebastianowy/concurrent-queue
 # or
-yarn add @sebowy/concurrent-queue
+yarn add @sebastianowy/concurrent-queue
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ yarn add @sebowy/concurrent-queue
 - examples with timeouts
 
 ```js
-import { createConcurrentQueue } from '@sebowy/concurrent-queue';
+import { createConcurrentQueue } from '@sebastianowy/concurrent-queue';
 
 const queue = createConcurrentQueue({
     maxConcurrency: 2,
@@ -68,7 +68,7 @@ will produce:
 - example with heavy requests (every request takes 10 seconds to respond)
 
 ```ts
-import { ConcurrentQueue } from "@sebowy/concurrent-queue";
+import { ConcurrentQueue } from "@sebastianowy/concurrent-queue";
 import { default as fetch } from 'node-fetch';
 
 const queue = new ConcurrentQueue({
@@ -111,7 +111,7 @@ will produce:
 - by default factory function
 
     ```ts
-    import { createConcurrentQueue } from "@sebowy/concurrent-queue";
+    import { createConcurrentQueue } from "@sebastianowy/concurrent-queue";
 
     const queue = createConcurrentQueue({
         maxConcurrency: 2,
@@ -121,7 +121,7 @@ will produce:
 - by constructor
 
     ```ts
-    import { ConcurrentQueue } from "@sebowy/concurrent-queue";
+    import { ConcurrentQueue } from "@sebastianowy/concurrent-queue";
 
     const queue = new ConcurrentQueue({
         maxConcurrency: 2,
@@ -131,7 +131,7 @@ will produce:
 - by factory
 
     ```ts
-    import { ConcurrentQueueFactory } from "@sebowy/concurrent-queue";
+    import { ConcurrentQueueFactory } from "@sebastianowy/concurrent-queue";
 
     const queueFactory = new ConcurrentQueueFactory();
     const queue = queueFactory.createConcurrentQueue({
